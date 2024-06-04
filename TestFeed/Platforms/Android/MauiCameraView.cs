@@ -97,7 +97,6 @@ namespace TestFeed.Platforms.Android
                             _viewFinder.SetScaleType(PreviewView.ScaleType.FillCenter);
                             AddView(_viewFinder);
 
-                            //Refer to Android documentation to retrieve cameras that are not the default back camera
                             if (_cameraProvider.HasCamera(CameraSelector.DefaultBackCamera) is true && _viewFinder is not null)
                             {
 
@@ -123,7 +122,6 @@ namespace TestFeed.Platforms.Android
                                 _camera = _cameraProvider.BindToLifecycle(owner, CameraSelector.DefaultBackCamera, _preview, _imageAnalysis);
 
 
-                                //start the camera with AutoFocus
                                 MeteringPoint point = new SurfaceOrientedMeteringPointFactory(1f, 1f).CreatePoint(0, 5f, 0.5f);
                                 FocusMeteringAction action = new FocusMeteringAction.Builder(point, FocusMeteringAction.FlagAf + FocusMeteringAction.FlagAe + FocusMeteringAction.FlagAwb)
                                                                                     .SetAutoCancelDuration(1, TimeUnit.Seconds!)
